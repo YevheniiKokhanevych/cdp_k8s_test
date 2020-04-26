@@ -5,7 +5,7 @@ metadata:
   labels:
     app: {{ .Chart.Name }}
 spec:
-  replicas: 2
+  replicas: {{.Value.replicas}}
   selector:
     matchLabels:
       app: {{ .Chart.Name }}
@@ -13,20 +13,8 @@ spec:
     metadata:
       labels:
         app: {{ .Chart.Name }}
-    spec:
-      volumes:
-        - name: app-config
-          configMap:
-            name: environment.properties
-            items:
-            - key: environment.properties
-              path: application.properties
       containers:
         - name: app
-          image: {{ .Values.registry }}/demo/app:{{ .Chart.Version }}
+          image: {{ .Chart.Name }}:{{ .Value.version }}
           ports:
             - containerPort: 8080
-          volumeMounts:
-            - name: app-config
-              mountPath: /home/demo/application.properties
-              subPath: application.properties
