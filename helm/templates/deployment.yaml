@@ -5,7 +5,7 @@ metadata:
   labels:
     app: {{ .Chart.Name }}
 spec:
-  replicas: {{.Value.replicas}}
+  replicas: {{.Values.replicas}}
   selector:
     matchLabels:
       app: {{ .Chart.Name }}
@@ -15,6 +15,6 @@ spec:
         app: {{ .Chart.Name }}
       containers:
         - name: app
-          image: {{ .Chart.Name }}:{{ .Value.version }}
+          image: {{ .Chart.Name }}:{{ .Values.version }}
           ports:
             - containerPort: 8080
