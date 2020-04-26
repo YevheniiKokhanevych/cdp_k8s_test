@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: {{ .Chart.Name }}
+    spec:
       containers:
         - name: app
           image: {{ .Chart.Name }}:{{ .Values.version }}
