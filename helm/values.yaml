@@ -1,3 +1,5 @@
 # This variables are defined in pipeline
 version: ''
 replicas: 1
+secretValue: ''
+registry: ''
