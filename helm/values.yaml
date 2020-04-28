@@ -3,3 +3,4 @@ version: ''
 replicas: 1
 secretValue: ''
 registry: ''
+password: ''
