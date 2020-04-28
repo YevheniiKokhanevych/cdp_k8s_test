@@ -17,5 +17,11 @@ spec:
       containers:
         - name: app
           image: {{.Values.registry}}/{{ .Chart.Name }}:{{ .Values.version }}
+          env:
+          - name: SECRET_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: cdp-secret
+                key: password
           ports:
             - containerPort: 8080
